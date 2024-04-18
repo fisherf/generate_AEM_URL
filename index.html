@@ -63,7 +63,11 @@
     <script>
         document.getElementById('Generate-authoring').addEventListener('click', function() {
             const userInput = document.getElementById('Authoring').value;
-            document.getElementById('output-authoring').textContent = 'https://sites-author.adobeprod.microsoft.com/editor.html/content/microsoft/bade/' + userInput + '.html';
+            url = 'https://sites-author.adobeprod.microsoft.com/editor.html/content/microsoft/bade/' + userInput + '.html';
+            const link = document.createElement('a');
+            link.href = url; // Set the URL
+            link.textContent = url; // Set the display text
+            document.getElementById('output-authoring').appendChild(link);
         });
     </script>
     <div></div>
@@ -79,7 +83,11 @@
     <script>
         document.getElementById('Generate-preview').addEventListener('click', function() {
             const userInput = document.getElementById('Preview').value;
-            document.getElementById('output-preview').textContent = 'https://sites-author.adobeprod.microsoft.com/content/microsoft/bade/' + userInput + '.html?wcmmode=disabled';
+            url = 'https://sites-author.adobeprod.microsoft.com/content/microsoft/bade/' + userInput + '.html?wcmmode=disabled';
+            const link = document.createElement('a');
+            link.href = url; // Set the URL
+            link.textContent = url; // Set the display text
+            document.getElementById('output-preview').appendChild(link);
         });
     </script>
     <div></div>
@@ -95,7 +103,11 @@
     <script>
         document.getElementById('Generate-Properties').addEventListener('click', function() {
             const userInput = document.getElementById('Properties').value;
-            document.getElementById('output-Properties').textContent = 'https://sites-author.adobeprod.microsoft.com/mnt/overlay/wcm/core/content/sites/properties.html?item=/content/microsoft/bade/' + userInput;
+            url = 'https://sites-author.adobeprod.microsoft.com/mnt/overlay/wcm/core/content/sites/properties.html?item=/content/microsoft/bade/' + userInput;
+            const link = document.createElement('a');
+            link.href = url; // Set the URL
+            link.textContent = url; // Set the display text
+            document.getElementById('output-Properties').appendChild(link);
         });
     </script>
     <div></div>
@@ -111,7 +123,11 @@
     <script>
         document.getElementById('Generate-Live-Preview').addEventListener('click', function() {
             const userInput = document.getElementById('Live-Preview').value;
-            document.getElementById('output-Live-Preview').textContent = 'https://www.microsoft.com/' + userInput + '?Invisibiliarevelare=true';
+            url = 'https://www.microsoft.com/' + userInput + '?Invisibiliarevelare=true';
+            const link = document.createElement('a');
+            link.href = url; // Set the URL
+            link.textContent = url; // Set the display text
+            document.getElementById('output-Live-Preview').appendChild(link);
         });
     </script>
         <div></div>
@@ -119,7 +135,7 @@
         <br>
         <label for="name">Launch Management:</label>
         <input type="text" class="text-input" name="myText" id="Launch-Management" placeholder="Type en-us launch authoring URL" size="4"/>
-        <span style="color:gray;font-weight:normal;font-size:small;">For example: https://sites-author.adobeprod.microsoft.com/editor.html/content/launches/2024/01/17/301303-january-2024-launch/content/microsoft/bade/en-us/startups/ai.html</span>
+        <span style="color:gray;font-weight:normal;font-size:small;">This is used to locate the launch version page management panel, so we can use the menu to create live copy. For example: https://sites-author.adobeprod.microsoft.com/editor.html/content/launches/2024/01/17/301303-january-2024-launch/content/microsoft/bade/en-us/startups/ai.html</span>
         <div></div>
         <button id="Generate-Launch-Management">Generate</button>
         <div id="output-Launch-Management"></div>
@@ -151,7 +167,11 @@
                 const firstContent = extractFirstContent(userInput);
                 const enUsText = extractEnUsText(userInput);
                 const modifiedString = removeAfterLastBackslash(enUsText);
-                document.getElementById('output-Launch-Management').textContent = 'https://sites-author.adobeprod.microsoft.com/sites.html/' + firstContent + '/microsoft/bade/' + modifiedString + '?rootpath=/' + firstContent + '/microsoft/bade/' + modifiedString;
+                url = 'https://sites-author.adobeprod.microsoft.com/sites.html/' + firstContent + '/microsoft/bade/' + modifiedString + '?rootpath=/' + firstContent + '/microsoft/bade/' + modifiedString;
+                const link = document.createElement('a');
+                link.href = url; // Set the URL
+                link.textContent = url; // Set the display text
+                document.getElementById('output-Launch-Management').appendChild(link);
             });
         </script>
     </div>
@@ -167,7 +187,11 @@
         <script>
             document.getElementById('Generate-authoring-ACOM').addEventListener('click', function() {
                 const userInput = document.getElementById('Authoring-ACOM').value;
-                document.getElementById('output-authoring-ACOM').textContent = 'https://sites-author.adobeprod.microsoft.com/editor.html/content/azure/acom/' + userInput + '.html';
+                url = 'https://sites-author.adobeprod.microsoft.com/editor.html/content/azure/acom/' + userInput + '.html';
+                const link = document.createElement('a');
+                link.href = url; // Set the URL
+                link.textContent = url; // Set the display text
+                document.getElementById('output-authoring-ACOM').appendChild(link);
             });
         </script>
         <div></div>
@@ -183,7 +207,11 @@
         <script>
             document.getElementById('Generate-preview-ACOM').addEventListener('click', function() {
                 const userInput = document.getElementById('Preview-ACOM').value;
-                document.getElementById('output-preview-ACOM').textContent = 'https://sites-author.adobeprod.microsoft.com/content/azure/acom/' + userInput + '.html?wcmmode=disabled';
+                url = 'https://sites-author.adobeprod.microsoft.com/content/azure/acom/' + userInput + '.html?wcmmode=disabled';
+                const link = document.createElement('a');
+                link.href = url; // Set the URL
+                link.textContent = url; // Set the display text
+                document.getElementById('output-preview-ACOM').appendChild(link);
             });
         </script>
         <div></div>
@@ -199,7 +227,11 @@
         <script>
             document.getElementById('Generate-Properties-ACOM').addEventListener('click', function() {
                 const userInput = document.getElementById('Properties-ACOM').value;
-                document.getElementById('output-Properties-ACOM').textContent = 'https://sites-author.adobeprod.microsoft.com/mnt/overlay/wcm/core/content/sites/properties.html?item=/azure/acom/' + userInput;
+                url = 'https://sites-author.adobeprod.microsoft.com/mnt/overlay/wcm/core/content/sites/properties.html?item=/azure/acom/' + userInput;
+                const link = document.createElement('a');
+                link.href = url; // Set the URL
+                link.textContent = url; // Set the display text
+                document.getElementById('output-Properties-ACOM').appendChild(link);
             });
         </script>
         <div></div>
@@ -215,7 +247,11 @@
         <script>
             document.getElementById('Generate-Live-Preview-ACOM').addEventListener('click', function() {
                 const userInput = document.getElementById('Live-Preview-ACOM').value;
-                document.getElementById('output-Live-Preview-ACOM').textContent = 'https://origin.azureprod.microsoft.com/' + userInput + '?Invisibiliarevelare=true';
+                url = 'https://origin.azureprod.microsoft.com/' + userInput + '?Invisibiliarevelare=true';
+                const link = document.createElement('a');
+                link.href = url; // Set the URL
+                link.textContent = url; // Set the display text
+                document.getElementById('output-Live-Preview-ACOM').appendChild(link);
             });
         </script>
         <div></div>
@@ -223,7 +259,7 @@
         <br>
         <label for="name">Launch Management:</label>
         <input type="text" class="text-input" name="myText" id="Launch-Management-ACOM" placeholder="Type en-us launch authoring URL" size="4"/>
-        <span style="color:gray;font-weight:normal;font-size:small;">For example: https://sites-author.adobeprod.microsoft.com/editor.html/content/launches/2023/10/06/283342_-_november-15-2023/content/azure/acom/en-us/products/mysql.html</span>
+        <span style="color:gray;font-weight:normal;font-size:small;">This is used to locate the launch version page management panel, so we can use the menu to create live copy.For example: https://sites-author.adobeprod.microsoft.com/editor.html/content/launches/2023/10/06/283342_-_november-15-2023/content/azure/acom/en-us/products/mysql.html</span>
         <div></div>
         <button id="Generate-Launch-Management-ACOM">Generate</button>
         <div id="output-Launch-Management-ACOM"></div>
@@ -255,7 +291,11 @@
                 const firstContent = extractFirstContent(userInput);
                 const enUsText = extractEnUsText(userInput);
                 const modifiedString = removeAfterLastBackslash(enUsText);
-                document.getElementById('output-Launch-Management-ACOM').textContent = 'https://sites-author.adobeprod.microsoft.com/sites.html/' + firstContent + '/azure/acom/' + modifiedString + '?rootpath=/' + firstContent + '/azure/acom/' + modifiedString;
+                url = 'https://sites-author.adobeprod.microsoft.com/sites.html/' + firstContent + '/azure/acom/' + modifiedString + '?rootpath=/' + firstContent + '/azure/acom/' + modifiedString;
+                const link = document.createElement('a');
+                link.href = url; // Set the URL
+                link.textContent = url; // Set the display text
+                document.getElementById('output-Launch-Management-ACOM').appendChild(link);
             });
         </script>
         </div>
