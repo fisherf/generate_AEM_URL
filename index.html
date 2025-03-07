@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
             margin: 0;
             padding: 0;
         }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -21,9 +23,11 @@
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         label {
             font-weight: bold;
         }
+
         input[type="text"] {
             width: 100%;
             padding: 10px;
@@ -31,6 +35,7 @@
             border: 1px solid #ccc;
             border-radius: 3px;
         }
+
         button {
             background-color: #0078d4;
             color: #fff;
@@ -39,268 +44,337 @@
             border-radius: 3px;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #005a9e;
         }
     </style>
 </head>
+
 <body>
     <table style="width:100%">
-    <tr>
-        <th style="width:50%"><h1>BADE</h1></th>
-        <th style="width:50%"><h1>ACOM</h1></th>
-    </tr>
-    <tr style="text-align:left">
-        <th>
-    <div class="container">
-    <label for="name">Authoring:</label>
-    <input type="text" class="text-input" name="myText" id="Authoring" placeholder="Type URL which starts from LL-CC..." size="4"/>
-    <span style="color:gray;font-weight:normal;font-size:small;">For example: en-ca/microsoft-teams/group-chat-software</span>
-    <div></div>
-    <button id="Generate-authoring">Generate</button>
-    <div id="output-authoring"></div>
-    <div></div>
-    <script>
-        document.getElementById('Generate-authoring').addEventListener('click', function() {
-            const userInput = document.getElementById('Authoring').value;
-            url = 'https://sites-author.adobeprod.microsoft.com/editor.html/content/microsoft/bade/' + userInput + '.html';
-            const link = document.createElement('a');
-            link.href = url; // Set the URL
-            link.textContent = url; // Set the display text
-            document.getElementById('output-authoring').appendChild(link);
-        });
-    </script>
-    <div></div>
-    <div></div>
-    <br>
-    <label for="name">Preview:</label>
-    <input type="text" class="text-input" name="myText" id="Preview" placeholder="Type URL which starts from LL-CC..." size="4"/>
-    <span style="color:gray;font-weight:normal;font-size:small;">For example: en-ca/microsoft-teams/group-chat-software</span>
-    <div></div>
-    <button id="Generate-preview">Generate</button>
-    <div id="output-preview"></div>
-    <div></div>
-    <script>
-        document.getElementById('Generate-preview').addEventListener('click', function() {
-            const userInput = document.getElementById('Preview').value;
-            url = 'https://sites-author.adobeprod.microsoft.com/content/microsoft/bade/' + userInput + '.html?wcmmode=disabled';
-            const link = document.createElement('a');
-            link.href = url; // Set the URL
-            link.textContent = url; // Set the display text
-            document.getElementById('output-preview').appendChild(link);
-        });
-    </script>
-    <div></div>
-    <div></div>
-    <br>
-    <label for="name">Properties:</label>
-    <input type="text" class="text-input" name="myText" id="Properties" placeholder="Type URL which starts from LL-CC..." size="4"/>
-    <span style="color:gray;font-weight:normal;font-size:small;">For example: en-ca/microsoft-teams/group-chat-software</span>
-    <div></div>
-    <button id="Generate-Properties">Generate</button>
-    <div id="output-Properties"></div>
-    <div></div>
-    <script>
-        document.getElementById('Generate-Properties').addEventListener('click', function() {
-            const userInput = document.getElementById('Properties').value;
-            url = 'https://sites-author.adobeprod.microsoft.com/mnt/overlay/wcm/core/content/sites/properties.html?item=/content/microsoft/bade/' + userInput;
-            const link = document.createElement('a');
-            link.href = url; // Set the URL
-            link.textContent = url; // Set the display text
-            document.getElementById('output-Properties').appendChild(link);
-        });
-    </script>
-    <div></div>
-    <div></div>
-    <br>
-    <label for="name">Live Preview:</label>
-    <input type="text" class="text-input" name="myText" id="Live-Preview" placeholder="Type URL which starts from LL-CC..." size="4"/>
-    <span style="color:gray;font-weight:normal;font-size:small;">For example: en-ca/microsoft-teams/group-chat-software</span>
-    <div></div>
-    <button id="Generate-Live-Preview">Generate</button>
-    <div id="output-Live-Preview"></div>
-    <div></div>
-    <script>
-        document.getElementById('Generate-Live-Preview').addEventListener('click', function() {
-            const userInput = document.getElementById('Live-Preview').value;
-            url = 'https://www.microsoft.com/' + userInput + '?Invisibiliarevelare=true';
-            const link = document.createElement('a');
-            link.href = url; // Set the URL
-            link.textContent = url; // Set the display text
-            document.getElementById('output-Live-Preview').appendChild(link);
-        });
-    </script>
-        <div></div>
-        <div></div>
-        <br>
-        <label for="name">Launch Management:</label>
-        <input type="text" class="text-input" name="myText" id="Launch-Management" placeholder="Type en-us launch authoring URL" size="4"/>
-        <span style="color:gray;font-weight:normal;font-size:small;">This is used to locate the launch version page management panel, so we can use the menu to create live copy. For example: https://sites-author.adobeprod.microsoft.com/editor.html/content/launches/2024/01/17/301303-january-2024-launch/content/microsoft/bade/en-us/startups/ai.html</span>
-        <div></div>
-        <button id="Generate-Launch-Management">Generate</button>
-        <div id="output-Launch-Management"></div>
-        <div></div>
-        <script>
-            function extractFirstContent(userInput) {
-            const startIndex = userInput.indexOf('content');
-            const endIndex = userInput.lastIndexOf('content');
-            return userInput.substring(startIndex, endIndex + 7); // Include 'content'
-            }
-
-            function extractEnUsText(userInput) {
-            const enUsStartIndex = userInput.indexOf('en-us');
-            const enUsEndIndex = userInput.indexOf('.html', enUsStartIndex);
-            return userInput.substring(enUsStartIndex, enUsEndIndex);
-            }
-
-            function removeAfterLastBackslash(inputString) {
-            const lastIndex = inputString.lastIndexOf('/');
-            if (lastIndex !== -1) {
-                return inputString.substring(0, lastIndex);
-            } else {
-                return inputString; // No backslash found
-            }
-            }
-
-            document.getElementById('Generate-Launch-Management').addEventListener('click', function() {
-                const userInput = document.getElementById('Launch-Management').value;
-                const firstContent = extractFirstContent(userInput);
-                const enUsText = extractEnUsText(userInput);
-                const modifiedString = removeAfterLastBackslash(enUsText);
-                url = 'https://sites-author.adobeprod.microsoft.com/sites.html/' + firstContent + '/microsoft/bade/' + modifiedString + '?rootpath=/' + firstContent + '/microsoft/bade/' + modifiedString;
-                const link = document.createElement('a');
-                link.href = url; // Set the URL
-                link.textContent = url; // Set the display text
-                document.getElementById('output-Launch-Management').appendChild(link);
-            });
-        </script>
-    </div>
-        <th style="text-align:left">
-        <div class="container">
-        <label for="name">Authoring:</label>
-        <input type="text" class="text-input" name="myText" id="Authoring-ACOM" placeholder="Type URL which starts from LL-CC..." size="4"/>
-        <span style="color:gray;font-weight:normal;font-size:small;">For example: pt-br/free/students</span>
-        <div></div>
-        <button id="Generate-authoring-ACOM">Generate</button>
-        <div id="output-authoring-ACOM"></div>
-        <div></div>
-        <script>
-            document.getElementById('Generate-authoring-ACOM').addEventListener('click', function() {
-                const userInput = document.getElementById('Authoring-ACOM').value;
-                url = 'https://sites-author.adobeprod.microsoft.com/editor.html/content/azure/acom/' + userInput + '.html';
-                const link = document.createElement('a');
-                link.href = url; // Set the URL
-                link.textContent = url; // Set the display text
-                document.getElementById('output-authoring-ACOM').appendChild(link);
-            });
-        </script>
-        <div></div>
-        <div></div>
-        <br>
-        <label for="name">Preview:</label>
-        <input type="text" class="text-input" name="myText" id="Preview-ACOM" placeholder="Type URL which starts from LL-CC..." size="4"/>
-        <span style="color:gray;font-weight:normal;font-size:small;">For example: pt-br/free/students</span>
-        <div></div>
-        <button id="Generate-preview-ACOM">Generate</button>
-        <div id="output-preview-ACOM"></div>
-        <div></div>
-        <script>
-            document.getElementById('Generate-preview-ACOM').addEventListener('click', function() {
-                const userInput = document.getElementById('Preview-ACOM').value;
-                url = 'https://sites-author.adobeprod.microsoft.com/content/azure/acom/' + userInput + '.html?wcmmode=disabled';
-                const link = document.createElement('a');
-                link.href = url; // Set the URL
-                link.textContent = url; // Set the display text
-                document.getElementById('output-preview-ACOM').appendChild(link);
-            });
-        </script>
-        <div></div>
-        <div></div>
-        <br>
-        <label for="name">Properties:</label>
-        <input type="text" class="text-input" name="myText" id="Properties-ACOM" placeholder="Type URL which starts from LL-CC..." size="4"/>
-        <span style="color:gray;font-weight:normal;font-size:small;">For example: pt-br/free/students</span>
-        <div></div>
-        <button id="Generate-Properties-ACOM">Generate</button>
-        <div id="output-Properties-ACOM"></div>
-        <div></div>
-        <script>
-            document.getElementById('Generate-Properties-ACOM').addEventListener('click', function() {
-                const userInput = document.getElementById('Properties-ACOM').value;
-                url = 'https://sites-author.adobeprod.microsoft.com/mnt/overlay/wcm/core/content/sites/properties.html?item=/content/azure/acom/' + userInput;
-                const link = document.createElement('a');
-                link.href = url; // Set the URL
-                link.textContent = url; // Set the display text
-                document.getElementById('output-Properties-ACOM').appendChild(link);
-            });
-        </script>
-        <div></div>
-        <div></div>
-        <br>
-        <label for="name">Live Preview:</label>
-        <input type="text" class="text-input" name="myText" id="Live-Preview-ACOM" placeholder="Type URL which starts from LL-CC..." size="4"/>
-        <span style="color:gray;font-weight:normal;font-size:small;">For example: pt-br/free/students</span>
-        <div></div>
-        <button id="Generate-Live-Preview-ACOM">Generate</button>
-        <div id="output-Live-Preview-ACOM"></div>
-        <div></div>
-        <script>
-            document.getElementById('Generate-Live-Preview-ACOM').addEventListener('click', function() {
-                const userInput = document.getElementById('Live-Preview-ACOM').value;
-                url = 'https://origin.azureprod.microsoft.com/' + userInput + '?Invisibiliarevelare=true';
-                const link = document.createElement('a');
-                link.href = url; // Set the URL
-                link.textContent = url; // Set the display text
-                document.getElementById('output-Live-Preview-ACOM').appendChild(link);
-            });
-        </script>
-        <div></div>
-        <div></div>
-        <br>
-        <label for="name">Launch Management:</label>
-        <input type="text" class="text-input" name="myText" id="Launch-Management-ACOM" placeholder="Type en-us launch authoring URL" size="4"/>
-        <span style="color:gray;font-weight:normal;font-size:small;">This is used to locate the launch version page management panel, so we can use the menu to create live copy.For example: https://sites-author.adobeprod.microsoft.com/editor.html/content/launches/2023/10/06/283342_-_november-15-2023/content/azure/acom/en-us/products/mysql.html</span>
-        <div></div>
-        <button id="Generate-Launch-Management-ACOM">Generate</button>
-        <div id="output-Launch-Management-ACOM"></div>
-        <div></div>
-        <script>
-            function extractFirstContent(userInput) {
-            const startIndex = userInput.indexOf('content');
-            const endIndex = userInput.lastIndexOf('content');
-            return userInput.substring(startIndex, endIndex + 7); // Include 'content'
-            }
-
-            function extractEnUsText(userInput) {
-            const enUsStartIndex = userInput.indexOf('en-us');
-            const enUsEndIndex = userInput.indexOf('.html', enUsStartIndex);
-            return userInput.substring(enUsStartIndex, enUsEndIndex);
-            }
-
-            function removeAfterLastBackslash(inputString) {
-            const lastIndex = inputString.lastIndexOf('/');
-            if (lastIndex !== -1) {
-                return inputString.substring(0, lastIndex);
-            } else {
-                return inputString; // No backslash found
-            }
-            }
-
-            document.getElementById('Generate-Launch-Management-ACOM').addEventListener('click', function() {
-                const userInput = document.getElementById('Launch-Management-ACOM').value;
-                const firstContent = extractFirstContent(userInput);
-                const enUsText = extractEnUsText(userInput);
-                const modifiedString = removeAfterLastBackslash(enUsText);
-                url = 'https://sites-author.adobeprod.microsoft.com/sites.html/' + firstContent + '/azure/acom/' + modifiedString + '?rootpath=/' + firstContent + '/azure/acom/' + modifiedString;
-                const link = document.createElement('a');
-                link.href = url; // Set the URL
-                link.textContent = url; // Set the display text
-                document.getElementById('output-Launch-Management-ACOM').appendChild(link);
-            });
-        </script>
-        </div>
-        </th>
+        <tr>
+            <th style="width:50%">
+                <h1>BADE</h1>
+            </th>
+            <th style="width:50%">
+                <h1>ACOM</h1>
+            </th>
         </tr>
-        </table>
+        <tr style="text-align:left">
+            <th>
+                <div class="container">
+                    <label for="name">Authoring:</label>
+                    <input type="text" class="text-input" name="myText" id="Authoring"
+                        placeholder="Type URL which starts from LL-CC..." size="4" />
+                    <span style="color:gray;font-weight:normal;font-size:small;">For example:
+                        en-ca/microsoft-teams/group-chat-software</span>
+                    <div></div>
+                    <button id="Generate-authoring">Generate</button>
+                    <div id="output-authoring"></div>
+                    <div></div>
+                    <script>
+                        document.getElementById('Generate-authoring').addEventListener('click', function () {
+                            const userInput = document.getElementById('Authoring').value;
+                            url = 'https://sites-author.adobeprod.microsoft.com/editor.html/content/microsoft/bade/' + userInput + '.html';
+                            const link = document.createElement('a');
+                            link.href = url; // Set the URL
+                            link.textContent = url; // Set the display text
+                            document.getElementById('output-authoring').appendChild(link);
+                        });
+                    </script>
+                    <div></div>
+                    <div></div>
+                    <br>
+                    <label for="name">Preview:</label>
+                    <input type="text" class="text-input" name="myText" id="Preview"
+                        placeholder="Type URL which starts from LL-CC..." size="4" />
+                    <span style="color:gray;font-weight:normal;font-size:small;">For example:
+                        en-ca/microsoft-teams/group-chat-software</span>
+                    <div></div>
+                    <button id="Generate-preview">Generate</button>
+                    <div id="output-preview"></div>
+                    <div></div>
+                    <script>
+                        document.getElementById('Generate-preview').addEventListener('click', function () {
+                            const userInput = document.getElementById('Preview').value;
+                            url = 'https://sites-author.adobeprod.microsoft.com/content/microsoft/bade/' + userInput + '.html?wcmmode=disabled';
+                            const link = document.createElement('a');
+                            link.href = url; // Set the URL
+                            link.textContent = url; // Set the display text
+                            document.getElementById('output-preview').appendChild(link);
+                        });
+                    </script>
+                    <div></div>
+                    <div></div>
+                    <br>
+                    <label for="name">Properties:</label>
+                    <input type="text" class="text-input" name="myText" id="Properties"
+                        placeholder="Type URL which starts from LL-CC..." size="4" />
+                    <span style="color:gray;font-weight:normal;font-size:small;">For example:
+                        en-ca/microsoft-teams/group-chat-software</span>
+                    <div></div>
+                    <button id="Generate-Properties">Generate</button>
+                    <div id="output-Properties"></div>
+                    <div></div>
+                    <script>
+                        document.getElementById('Generate-Properties').addEventListener('click', function () {
+                            const userInput = document.getElementById('Properties').value;
+                            url = 'https://sites-author.adobeprod.microsoft.com/mnt/overlay/wcm/core/content/sites/properties.html?item=/content/microsoft/bade/' + userInput;
+                            const link = document.createElement('a');
+                            link.href = url; // Set the URL
+                            link.textContent = url; // Set the display text
+                            document.getElementById('output-Properties').appendChild(link);
+                        });
+                    </script>
+                    <div></div>
+                    <div></div>
+                    <br>
+                    <label for="name">EN-BZ Source:</label>
+                    <input type="text" class="text-input" name="myText" id="Source-BADE"
+                        placeholder="Type URL which starts from LL-CC..." size="4" />
+                    <span style="color:gray;font-weight:normal;font-size:small;">For example:
+                        global/en-bz/microsoft-teams/group-chat-software; source-1/en-bz/microsoft-teams/group-chat-software;</span>
+                    <div></div>
+                    <button id="Generate-Source-BADE">Generate</button>
+                    <div id="output-Source-BADE"></div>
+                    <div></div>
+                    <script>
+                        document.getElementById('Generate-Source-BADE').addEventListener('click', function () {
+                            const userInput = document.getElementById('Source-BADE').value;
+                            url = 'https://sites-author.adobeprod.microsoft.com/sites.html/content/microsoft/bade/source/' + userInput;
+                            const link = document.createElement('a');
+                            link.href = url; // Set the URL
+                            link.textContent = url; // Set the display text
+                            document.getElementById('output-Source-BADE').appendChild(link);
+                        });
+                    </script>
+                    <div></div>
+                    <div></div>
+                    <br>
+                    <label for="name">Live Preview:</label>
+                    <input type="text" class="text-input" name="myText" id="Live-Preview"
+                        placeholder="Type URL which starts from LL-CC..." size="4" />
+                    <span style="color:gray;font-weight:normal;font-size:small;">For example:
+                        en-ca/microsoft-teams/group-chat-software</span>
+                    <div></div>
+                    <button id="Generate-Live-Preview">Generate</button>
+                    <div id="output-Live-Preview"></div>
+                    <div></div>
+                    <script>
+                        document.getElementById('Generate-Live-Preview').addEventListener('click', function () {
+                            const userInput = document.getElementById('Live-Preview').value;
+                            url = 'https://www.microsoft.com/' + userInput + '?Invisibiliarevelare=true';
+                            const link = document.createElement('a');
+                            link.href = url; // Set the URL
+                            link.textContent = url; // Set the display text
+                            document.getElementById('output-Live-Preview').appendChild(link);
+                        });
+                    </script>
+                    <div></div>
+                    <div></div>
+                    <br>
+                    <label for="name">Launch Management:</label>
+                    <input type="text" class="text-input" name="myText" id="Launch-Management"
+                        placeholder="Type en-us launch authoring URL" size="4" />
+                    <span style="color:gray;font-weight:normal;font-size:small;">This is used to locate the launch
+                        version page management panel, so we can use the menu to create live copy. For example:
+                        https://sites-author.adobeprod.microsoft.com/editor.html/content/launches/2024/01/17/301303-january-2024-launch/content/microsoft/bade/en-us/startups/ai.html</span>
+                    <div></div>
+                    <button id="Generate-Launch-Management">Generate</button>
+                    <div id="output-Launch-Management"></div>
+                    <div></div>
+                    <script>
+                        function extractFirstContent(userInput) {
+                            const startIndex = userInput.indexOf('content');
+                            const endIndex = userInput.lastIndexOf('content');
+                            return userInput.substring(startIndex, endIndex + 7); // Include 'content'
+                        }
+
+                        function extractEnUsText(userInput) {
+                            const enUsStartIndex = userInput.indexOf('en-us');
+                            const enUsEndIndex = userInput.indexOf('.html', enUsStartIndex);
+                            return userInput.substring(enUsStartIndex, enUsEndIndex);
+                        }
+
+                        function removeAfterLastBackslash(inputString) {
+                            const lastIndex = inputString.lastIndexOf('/');
+                            if (lastIndex !== -1) {
+                                return inputString.substring(0, lastIndex);
+                            } else {
+                                return inputString; // No backslash found
+                            }
+                        }
+
+                        document.getElementById('Generate-Launch-Management').addEventListener('click', function () {
+                            const userInput = document.getElementById('Launch-Management').value;
+                            const firstContent = extractFirstContent(userInput);
+                            const enUsText = extractEnUsText(userInput);
+                            const modifiedString = removeAfterLastBackslash(enUsText);
+                            url = 'https://sites-author.adobeprod.microsoft.com/sites.html/' + firstContent + '/microsoft/bade/' + modifiedString + '?rootpath=/' + firstContent + '/microsoft/bade/' + modifiedString;
+                            const link = document.createElement('a');
+                            link.href = url; // Set the URL
+                            link.textContent = url; // Set the display text
+                            document.getElementById('output-Launch-Management').appendChild(link);
+                        });
+                    </script>
+                </div>
+            <th style="text-align:left">
+                <div class="container">
+                    <label for="name">Authoring:</label>
+                    <input type="text" class="text-input" name="myText" id="Authoring-ACOM"
+                        placeholder="Type URL which starts from LL-CC..." size="4" />
+                    <span style="color:gray;font-weight:normal;font-size:small;">For example: pt-br/free/students</span>
+                    <div></div>
+                    <button id="Generate-authoring-ACOM">Generate</button>
+                    <div id="output-authoring-ACOM"></div>
+                    <div></div>
+                    <script>
+                        document.getElementById('Generate-authoring-ACOM').addEventListener('click', function () {
+                            const userInput = document.getElementById('Authoring-ACOM').value;
+                            url = 'https://sites-author.adobeprod.microsoft.com/editor.html/content/azure/acom/' + userInput + '.html';
+                            const link = document.createElement('a');
+                            link.href = url; // Set the URL
+                            link.textContent = url; // Set the display text
+                            document.getElementById('output-authoring-ACOM').appendChild(link);
+                        });
+                    </script>
+                    <div></div>
+                    <div></div>
+                    <br>
+                    <label for="name">Preview:</label>
+                    <input type="text" class="text-input" name="myText" id="Preview-ACOM"
+                        placeholder="Type URL which starts from LL-CC..." size="4" />
+                    <span style="color:gray;font-weight:normal;font-size:small;">For example: pt-br/free/students</span>
+                    <div></div>
+                    <button id="Generate-preview-ACOM">Generate</button>
+                    <div id="output-preview-ACOM"></div>
+                    <div></div>
+                    <script>
+                        document.getElementById('Generate-preview-ACOM').addEventListener('click', function () {
+                            const userInput = document.getElementById('Preview-ACOM').value;
+                            url = 'https://sites-author.adobeprod.microsoft.com/content/azure/acom/' + userInput + '.html?wcmmode=disabled';
+                            const link = document.createElement('a');
+                            link.href = url; // Set the URL
+                            link.textContent = url; // Set the display text
+                            document.getElementById('output-preview-ACOM').appendChild(link);
+                        });
+                    </script>
+                    <div></div>
+                    <div></div>
+                    <br>
+                    <label for="name">Properties:</label>
+                    <input type="text" class="text-input" name="myText" id="Properties-ACOM"
+                        placeholder="Type URL which starts from LL-CC..." size="4" />
+                    <span style="color:gray;font-weight:normal;font-size:small;">For example: pt-br/free/students</span>
+                    <div></div>
+                    <button id="Generate-Properties-ACOM">Generate</button>
+                    <div id="output-Properties-ACOM"></div>
+                    <div></div>
+                    <script>
+                        document.getElementById('Generate-Properties-ACOM').addEventListener('click', function () {
+                            const userInput = document.getElementById('Properties-ACOM').value;
+                            url = 'https://sites-author.adobeprod.microsoft.com/mnt/overlay/wcm/core/content/sites/properties.html?item=/content/azure/acom/' + userInput;
+                            const link = document.createElement('a');
+                            link.href = url; // Set the URL
+                            link.textContent = url; // Set the display text
+                            document.getElementById('output-Properties-ACOM').appendChild(link);
+                        });
+                    </script>
+                    <div></div>
+                    <div></div>
+                    <br>
+                    <label for="name">EN-BZ Source:</label>
+                        <input type="text" class="text-input" name="myText" id="Source-ACOM"
+                            placeholder="Type URL which starts from LL-CC..." size="4" />
+                        <span style="color:gray;font-weight:normal;font-size:small;">For example:
+                            global/en-bz/explore/developer-resources; source-1/en-bz/explore/developer-resources;</span>
+                        <div></div>
+                        <button id="Generate-Source-ACOM">Generate</button>
+                        <div id="output-Source-ACOM"></div>
+                        <div></div>
+                        <script>
+                            document.getElementById('Generate-Source-ACOM').addEventListener('click', function () {
+                                const userInput = document.getElementById('Source-ACOM').value;
+                                url = 'https://sites-author.adobeprod.microsoft.com/sites.html/content/azure/acom/source/' + userInput;
+                                const link = document.createElement('a');
+                                link.href = url; // Set the URL
+                                link.textContent = url; // Set the display text
+                                document.getElementById('output-Source-ACOM').appendChild(link);
+                            });
+                        </script>
+                        <div></div>
+                        <div></div>
+                        <br>
+                    <label for="name">Live Preview:</label>
+                    <input type="text" class="text-input" name="myText" id="Live-Preview-ACOM"
+                        placeholder="Type URL which starts from LL-CC..." size="4" />
+                    <span style="color:gray;font-weight:normal;font-size:small;">For example: pt-br/free/students</span>
+                    <div></div>
+                    <button id="Generate-Live-Preview-ACOM">Generate</button>
+                    <div id="output-Live-Preview-ACOM"></div>
+                    <div></div>
+                    <script>
+                        document.getElementById('Generate-Live-Preview-ACOM').addEventListener('click', function () {
+                            const userInput = document.getElementById('Live-Preview-ACOM').value;
+                            url = 'https://origin.azureprod.microsoft.com/' + userInput + '?Invisibiliarevelare=true';
+                            const link = document.createElement('a');
+                            link.href = url; // Set the URL
+                            link.textContent = url; // Set the display text
+                            document.getElementById('output-Live-Preview-ACOM').appendChild(link);
+                        });
+                    </script>
+                    <div></div>
+                    <div></div>
+                    <br>
+                    <label for="name">Launch Management:</label>
+                    <input type="text" class="text-input" name="myText" id="Launch-Management-ACOM"
+                        placeholder="Type en-us launch authoring URL" size="4" />
+                    <span style="color:gray;font-weight:normal;font-size:small;">This is used to locate the launch
+                        version page management panel, so we can use the menu to create live copy.For example:
+                        https://sites-author.adobeprod.microsoft.com/editor.html/content/launches/2023/10/06/283342_-_november-15-2023/content/azure/acom/en-us/products/mysql.html</span>
+                    <div></div>
+                    <button id="Generate-Launch-Management-ACOM">Generate</button>
+                    <div id="output-Launch-Management-ACOM"></div>
+                    <div></div>
+                    <script>
+                        function extractFirstContent(userInput) {
+                            const startIndex = userInput.indexOf('content');
+                            const endIndex = userInput.lastIndexOf('content');
+                            return userInput.substring(startIndex, endIndex + 7); // Include 'content'
+                        }
+
+                        function extractEnUsText(userInput) {
+                            const enUsStartIndex = userInput.indexOf('en-us');
+                            const enUsEndIndex = userInput.indexOf('.html', enUsStartIndex);
+                            return userInput.substring(enUsStartIndex, enUsEndIndex);
+                        }
+
+                        function removeAfterLastBackslash(inputString) {
+                            const lastIndex = inputString.lastIndexOf('/');
+                            if (lastIndex !== -1) {
+                                return inputString.substring(0, lastIndex);
+                            } else {
+                                return inputString; // No backslash found
+                            }
+                        }
+
+                        document.getElementById('Generate-Launch-Management-ACOM').addEventListener('click', function () {
+                            const userInput = document.getElementById('Launch-Management-ACOM').value;
+                            const firstContent = extractFirstContent(userInput);
+                            const enUsText = extractEnUsText(userInput);
+                            const modifiedString = removeAfterLastBackslash(enUsText);
+                            url = 'https://sites-author.adobeprod.microsoft.com/sites.html/' + firstContent + '/azure/acom/' + modifiedString + '?rootpath=/' + firstContent + '/azure/acom/' + modifiedString;
+                            const link = document.createElement('a');
+                            link.href = url; // Set the URL
+                            link.textContent = url; // Set the display text
+                            document.getElementById('output-Launch-Management-ACOM').appendChild(link);
+                        });
+                    </script>
+                </div>
+            </th>
+        </tr>
+    </table>
 </body>
+
 </html>
