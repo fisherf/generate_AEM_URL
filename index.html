@@ -130,6 +130,28 @@
                     <div></div>
                     <div></div>
                     <br>
+                    <label for="name">XF Preview:</label>
+                    <input type="text" class="text-input" name="myText" id="XF-Preview"
+                        placeholder="Type URL which starts from /content" size="4" />
+                    <span style="color:gray;font-weight:normal;font-size:small;">For example:
+                        /content/experience-fragments/microsoft/bade/en-us/product-price/office-365/e3/Yearly-office-365-e3-eea-no-teams-chooser/master;</span>
+                    <div></div>
+                    <button id="Generate-XF-Preview">Generate</button>
+                    <div id="output-XF-Preview"></div>
+                    <div></div>
+                    <script>
+                        document.getElementById('Generate-XF-Preview').addEventListener('click', function () {
+                            const userInput = document.getElementById('XF-Preview').value;
+                            url = 'https://author-p147723-e1510601.adobeaemcloud.com/aem/experience-fragments.html' + userInput + '.html?wcmmode=disabled';
+                            const link = document.createElement('a');
+                            link.href = url; // Set the URL
+                            link.textContent = url; // Set the display text
+                            document.getElementById('output-XF-Preview').appendChild(link);
+                        });
+                    </script>
+                    <div></div>
+                    <div></div>
+                    <br>
                     <label for="name">Page folder:</label>
                     <input type="text" class="text-input" name="myText" id="Source-BADE"
                         placeholder="Type URL which starts from LL-CC..." size="4" />
@@ -279,6 +301,28 @@
                             link.href = url; // Set the URL
                             link.textContent = url; // Set the display text
                             document.getElementById('output-Properties-ACOM').appendChild(link);
+                        });
+                    </script>
+                    <div></div>
+                    <div></div>
+                    <br>
+                    <label for="name">XF Preview:</label>
+                    <input type="text" class="text-input" name="myText" id="XF-Preview-ACOM"
+                        placeholder="Type URL which starts from /content" size="4" />
+                    <span style="color:gray;font-weight:normal;font-size:small;">For example:
+                        /content/experience-fragments/azure/acom/en-us/azure-pricing/master;</span>
+                    <div></div>
+                    <button id="Generate-XF-Preview-ACOM">Generate</button>
+                    <div id="output-XF-Preview-ACOM"></div>
+                    <div></div>
+                    <script>
+                        document.getElementById('Generate-XF-Preview-ACOM').addEventListener('click', function () {
+                            const userInput = document.getElementById('XF-Preview-ACOM').value;
+                            url = 'https://author-p147723-e1510601.adobeaemcloud.com/aem/experience-fragments.html' + userInput + '.html?wcmmode=disabled';
+                            const link = document.createElement('a');
+                            link.href = url; // Set the URL
+                            link.textContent = url; // Set the display text
+                            document.getElementById('output-XF-Preview-ACOM').appendChild(link);
                         });
                     </script>
                     <div></div>
